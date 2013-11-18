@@ -1,13 +1,16 @@
 class PostsController < ApplicationController
 
 def new
+  @post = Post.new
 end
 
 def create
-  @post = Post.new(post_params)
+  @post = Post.new(params[:post].permit(:title, :text))
 
-  @post.save
-  redirect_to @post
+  if @post.save
+  	redirect_to @post
+  else
+  	render 'new'
 end
 
 def show
@@ -18,10 +21,11 @@ def index
   @posts = Post.all
 end
 
-private
-  def post_params
-  	params.require(:post).permit(:title, :text)
-  end
+# private
+#   def post_params
+#   	params.require(:post).permit(:title, :text)
+#   end
 
-
+# end
+end
 end
