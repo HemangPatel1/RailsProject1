@@ -1,3 +1,4 @@
+<div style="width:500px;">
 <p>
   <strong>Title:</strong>
   <%= @post.title %>
@@ -7,11 +8,20 @@
   <strong>Text:</strong>
   <%= @post.text %>
 </p>
-<br> 
-<h4>Comments:</h4>
-<%= render @post.comments %>
- 
+</div>
 <br>
+<!-- <a href="">+1</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="">-1</a> -->
+
+<p>Total Votes:
+<span class="vote_count"><%= @post.votes_total %></span>
+</p>
+<%= button_to '+1', post_votes_path(@post, direction: 'up') %>
+<%= button_to '-1', post_votes_path(@post, direction: 'down') %>
+
+<br> 
+<p>Comments:</p>
+<%= render @post.comments %>
 <table border="1" width="200px">
 <tr>
   <td>

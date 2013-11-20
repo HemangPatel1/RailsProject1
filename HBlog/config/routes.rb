@@ -2,6 +2,7 @@ HBlog::Application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :votes
   end
 
   get "welcome/index"

@@ -1,21 +1,22 @@
-<h1>Listing posts</h1>
+<div style="width:600px; margin: 0 auto;">
+<h1>All Posts</h1>
 <%= link_to 'New post', new_post_path %> 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th></th>
-    <th></th>
-  </tr>
- 
+<br><br>
+<table> 
 <% @posts.each do |post| %>
   <tr>
-    <td><%= post.title %></td>
-    <td><%= post.text %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post_path(post),
-                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><strong><%= post.title %></strong></td>
+  </tr>
+  <tr>
+    <td style="width:600px;"><%= post.text %></td>
+  </tr>
+  <tr>
+    <td><%= link_to 'Show', post %>  |
+        <%= link_to 'Edit', edit_post_path(post) %>  |
+        <%= link_to 'Delete', post_path(post),
+                    method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <br><br></td>
   </tr>
 <% end %>
 </table>
+</div>
