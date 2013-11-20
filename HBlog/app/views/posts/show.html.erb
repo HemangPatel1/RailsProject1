@@ -1,17 +1,10 @@
 <div style="width:500px;">
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @post.text %>
-</p>
+	<h2><%= @post.title %></h2> 
+	<p><%= @post.text %></p>
 </div>
+
 <br>
-<!-- <a href="">+1</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="">-1</a> -->
+
 
 <p>Total Votes:
 <span class="vote_count"><%= @post.votes_total %></span>
@@ -20,15 +13,17 @@
 <%= button_to '-1', post_votes_path(@post, direction: 'down') %>
 
 <br> 
-<p>Comments:</p>
+<p><strong><u>Comments:</u></strong></p>
 <%= render @post.comments %>
-<table border="1" width="200px">
+
+<table style="border: 1px solid black; width:200px;">
 <tr>
   <td>
-<h4>Add a comment:</h4>
-<%= render "comments/form" %>
+	<p><strong>Add a comment:</strong></p>
+	<%= render "comments/form" %>
  </td>
 </tr>
 </table>
+
 <%= link_to 'Edit Post', edit_post_path(@post) %> |
-<%= link_to 'Back to Posts', posts_path %>
+<%= link_to 'Back to Posts', posts_path %>	
