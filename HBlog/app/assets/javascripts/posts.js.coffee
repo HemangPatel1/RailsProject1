@@ -5,3 +5,5 @@
 $ ->
   $('.button_to').on 'ajax:success', (e, resp) ->
     $(".vote_count[data-id=#{resp.id}]").text(resp.votes)
+	  .on 'ajax:error', (e, resp) ->
+	    alert(resp.responseJSON.error)
