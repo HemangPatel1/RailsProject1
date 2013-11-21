@@ -4,7 +4,7 @@ class VotesController < ApplicationController
 	    @post = Post.find params[:post_id]
 	    @post.votes.create(direction: params[:direction])
 	 
-	    redirect_to post_path(@post)
+	    render json: { id: @post.id, votes: @post.votes_total }
 	end
 
 end

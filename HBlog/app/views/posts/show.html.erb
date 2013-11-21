@@ -7,10 +7,13 @@
 
 
 <p>Total Votes:
-<span class="vote_count"><%= @post.votes_total %></span>
+<span class="vote_count" data-id='<%= @post.id %>'><%= @post.votes_total %></span>
 </p>
-<%= button_to '+1', post_votes_path(@post, direction: 'up') %>
-<%= button_to '-1', post_votes_path(@post, direction: 'down') %>
+<%= vote_button @post, 'up', '+1' %>
+<%= vote_button @post, 'down', '-1' %>
+
+
+
 
 <br> 
 <p><strong><u>Comments:</u></strong></p>
