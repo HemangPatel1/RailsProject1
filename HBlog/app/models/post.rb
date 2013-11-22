@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   validates :title, presence: true,
   					length: { minimum: 5 }
   has_many :votes
+  belongs_to :user
 
   def votes_total
      return nil if (upvotes + downvotes).empty?
