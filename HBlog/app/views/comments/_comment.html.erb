@@ -1,3 +1,4 @@
+<% if comment.persisted? %>
   <p>
     <strong>Name:</strong>
     <%= comment.commenter %>
@@ -7,7 +8,11 @@
   </p>
 
   <p>
+  <%= link_to 'Edit', edit_post_comment_path(@post, comment) %>
+  <br>
   <%= link_to 'Delete Comment', [comment.post, comment],
                method: :delete,
                data: { confirm: 'Are you sure?' } %>
+
   </p>
+<% end %>
