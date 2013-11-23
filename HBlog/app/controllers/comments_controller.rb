@@ -31,7 +31,7 @@ private
 
     if @comment.user != current_user
       flash.alert = "Not your comment"
-      redirect_to '/'
+      redirect_to post_path(@post)
     end
   end
 

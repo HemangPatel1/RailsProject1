@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
 before_action :authenticate_user!, except: [:index, :show]
+before_action :check_permission, only: [:update, :destroy]
 
 def index
   @posts = Post.all
@@ -18,7 +19,7 @@ end
 
 
 def create
-  @post = Post.new(params[:post].permit(:title, :text))
+  @post = Post.new(params[:post].permit(:title, :text).merge(user: current_user))
 
   if @post.save
   	redirect_to @post
@@ -55,10 +56,18 @@ end
 
 
 private
+ def check_permission
+    @post = Post.find(params[:id])
 
-def post_params
-  params.require(:post).permit(:title, :text)
-end
+    if @post.user != current_user
+      flash.alert = "Not your post"
+      redirect_to post_path(@post)
+    end
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :text)
+  end
 
 
 end
